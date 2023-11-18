@@ -11,7 +11,8 @@ export const getPokemon = () => {
                 type: GET_POK,
                 payload: pokemon.data,
               });
-        } catch (error) {console.log(error);}
+        } catch (error) {
+            alert("Error connect")} 
     }
 }
 
@@ -24,7 +25,7 @@ export const getPokemonId = (id) => {
                 payload: pokemonID.data
             });
         } catch (error) {
-            console.log(error, "no existe el pokemon o error en el back")
+            alert("this pokemon does not exist or error in the back")
         }
     }
 }
@@ -38,7 +39,8 @@ export const getPokemonName = (name) =>{
                 payload: pokemonName.data
             })
         } catch (error) {
-            alert ("this pokemon does not exist")
+            alert("this pokemon does not exist!", '', 'error')
+             
         }
     }
 }
@@ -52,7 +54,7 @@ export const getTypes = () => {
                 payload: pokemonTypes.data
             })
         } catch (error) {
-            console.log(error, "Error al traer types")
+            alert("Error al traer types")
         }
     }
 }

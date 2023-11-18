@@ -8,7 +8,7 @@ import style from "./Form.module.css";
 const Form = () => {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
-  const pokemon = useSelector((state) => state.pokemons);
+  const pokemons = useSelector((state) => state.allPokemons)
 
   const [input, setInput] = useState({
     name: "",
@@ -40,7 +40,7 @@ const Form = () => {
       validate({
         ...input,
         [event.target.name]: event.target.value,
-      }, pokemon)
+      }, pokemons)
     );
   };
 
@@ -51,12 +51,12 @@ const Form = () => {
       types: [...input.types, e.target.value],
     });
     setError(
-      validate({ ...input, types: [...input.types, e.target.value] }, pokemon)
+      validate({ ...input, types: [...input.types, e.target.value] })
     );
   }else{
     setInput({
       ...input,
-      types: input.types.filter(
+      types: input.types.filter( // Filtra los tipos para mantener solo aquellos que no son el tipo deseleccionado
         (c) => input.types.indexOf(c) !== input.types.indexOf(e.target.value)
       ),
     });
@@ -68,8 +68,7 @@ const Form = () => {
             (c) =>
               input.types.indexOf(c) !== input.types.indexOf(e.target.value)
           ),
-        },
-        pokemon
+        }
       )
     );
   }

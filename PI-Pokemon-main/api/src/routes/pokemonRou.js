@@ -43,7 +43,7 @@ router.get('/:id', async (req,res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const {data} = req.body; 
+    const data = req.body; 
     await newPokemons(data); 
     res.status(201).send('Pokemon successfully created');
   } catch (error) {
